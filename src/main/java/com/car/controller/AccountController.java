@@ -1,21 +1,18 @@
 package com.car.controller;
 
-import java.util.Optional;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.car.model.Buyer;
+import com.car.model.Login;
+import com.car.model.Seller;
+import com.car.repository.BuyerRepository;
+import com.car.repository.SellerRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.car.model.Buyer;
-import com.car.model.Login;
-import com.car.model.Seller;
-import com.car.repository.BookingRepository;
-import com.car.repository.BuyerRepository;
-import com.car.repository.SellerRepository;
+import java.util.Optional;
 
 @RequestMapping("/account")
 @Controller

@@ -1,11 +1,11 @@
 package com.car.repository;
-import java.util.List;
-import java.util.Optional;
 
+import com.car.model.Emi;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.car.model.Emi;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EmiRepository extends CrudRepository<Emi, String>{

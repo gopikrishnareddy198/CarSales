@@ -1,11 +1,11 @@
 package com.car.repository;
-import java.util.List;
-import java.util.Optional;
 
+import com.car.model.Booking;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.car.model.Booking;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface BookingRepository extends CrudRepository<Booking, String>{

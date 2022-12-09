@@ -1,10 +1,10 @@
 package com.car.repository;
-import java.util.Optional;
 
+import com.car.model.Buyer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.car.model.Buyer;
+import java.util.Optional;
 
 @Repository
 public interface BuyerRepository extends CrudRepository<Buyer, String>{
@@ -15,5 +15,6 @@ public interface BuyerRepository extends CrudRepository<Buyer, String>{
 
 	Optional<Buyer> findByBuyerId(String string);
 
+	Optional<Buyer> findByEmailId(String email);
 
 }

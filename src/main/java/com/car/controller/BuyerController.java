@@ -1,9 +1,10 @@
 package com.car.controller;
 
-import java.util.Optional;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.car.model.Buyer;
+import com.car.repository.BookingRepository;
+import com.car.repository.BuyerRepository;
+import com.car.repository.CarRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.car.model.Buyer;
-import com.car.repository.BookingRepository;
-import com.car.repository.BuyerRepository;
-import com.car.repository.CarRepository;
+import java.util.Optional;
 
 @RequestMapping("/buyer")
 @Controller
@@ -54,7 +52,7 @@ public class BuyerController {
 	}
 	
 	@RequestMapping("/save")
-	public String save( Buyer obj){
+	public String save( Buyer obj,Model model){
 		Optional<Buyer> idobj = repo.findTopByOrderByIdDesc();
 		String id = null;
 		if(idobj.isPresent())
@@ -69,6 +67,11 @@ public class BuyerController {
 		}
 		
 		obj.setBuyerId(id);
+		if(repo.findByEmailId(obj.getEmailId()).isPresent()){
+			model.addAttribute("errorMessage","Buyer with email id: "+ obj.getEmailId()+" already exists");
+			return "buy_create";
+		}
+
 		repo.save(obj);		
 		return "redirect:/account";
 	}

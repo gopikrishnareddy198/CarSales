@@ -1,9 +1,10 @@
 package com.car.controller;
 
-import java.util.Optional;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.car.model.Seller;
+import com.car.repository.BookingRepository;
+import com.car.repository.CarRepository;
+import com.car.repository.SellerRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.car.model.Seller;
-import com.car.repository.BookingRepository;
-import com.car.repository.CarRepository;
-import com.car.repository.SellerRepository;
+import java.util.Optional;
 
 @RequestMapping("/seller")
 @Controller
@@ -49,7 +47,7 @@ public class SellerController {
 	}
 
 	@RequestMapping("/save")
-	public String save(Seller obj) {
+	public String save(Seller obj,Model model) {
 		Optional<Seller> idobj = repo.findTopByOrderByIdDesc();
 		String id = null;
 		if (idobj.isPresent()) {
@@ -61,6 +59,11 @@ public class SellerController {
 		}
 
 		obj.setSellerId(id);
+		if(repo.findByEmailId(obj.getEmailId())!=null){
+			model.addAttribute("errorMessage","Seller with email id: "+ obj.getEmailId()+" already exists");
+			return "sell_create";
+		}
+
 		repo.save(obj);
 		return "redirect:/account";
 	}
