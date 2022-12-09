@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+<title>Add Booking</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2 class="text-white p-3">Add Booking Details</h2>
+
+			<form th:action="@{/booking/save}" th:object="${booking}">
+				<table class="tbl-form my-3">
+					<tr>
+						<th>CarId :</th>
+						<td><input readonly type="text" class="form-control"
+							name="carId" th:value="${car.carId}" /></td>
+					</tr>
+					<tr>
+						<th>Amount :</th>
+						<td><input type="text" class="form-control" name="amount" th:value="${car.price}" /></td>
+					</tr>
+					<tr>
+						<th>Payment Mode : </th>
+						<td><input type="radio" name="payMode" value="Card"
+							checked class="form-check-input" id="mode1" /> <label
+							class="form-check-label" for="mode1"> Cash </label>
+
+
+							&nbsp;&nbsp;&nbsp;&nbsp; 
+							<input type="radio" name="payMode" value="Online" class="form-check-input" id="mode2" /> 
+							<label class="form-check-label" for="mode2"> Online </label>
+							
+							
+
+							&nbsp;&nbsp;&nbsp;&nbsp; 
+							<input type="radio" name="payMode" value="finance" class="form-check-input" id="mode3" /> 
+							<label class="form-check-label" for="mode3"> Finance </label>
+					</tr>
+
+					<tr>
+						<td colspan="2" class="text-center p-5">
+							<button type="submit" class="btn btn-success btn-submit">Book Now</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+			
+		</div>
+		
+	
+	</div>
+</body>
+
+</html>

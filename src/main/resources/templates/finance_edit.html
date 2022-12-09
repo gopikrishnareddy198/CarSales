@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>Update Finance</h2>
+			<form th:action="@{/finance/update}" th:object="${finance}">
+				<table class="tbl-form">
+					<tr>
+						<td> Booking ID</td>
+						<td><input readonly type="text" class="form-control" name="bookingId" th:value="${obj.bookingId}" />
+						</td>
+					</tr>
+					<tr>
+						<td> Buyer ID</td>
+						<td><input readonly type="text" class="form-control" name="buyerId" th:value="${obj.buyerId}" />
+						</td>
+					</tr>
+					<tr>
+						<td> Loan Amount</td>
+						<td><input type="text" readonly class="form-control" id="loan" name="loanAmount" th:value="${obj.loanAmount}" /></td>
+					</tr>
+					<tr>
+						<td> Tenure</td>
+						<td><input type="text" class="form-control" name="tenure"  onchange="getAmount(this.value)"/></td>
+					</tr>
+					<tr>
+						<td> Monthly Emi</td>
+						<td><input readonly type="text" class="form-control" id="emi" name="emi"  /></td>
+					</tr>
+					
+				</table>
+
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<input type="hidden" name="interestRate" th:value="${obj.interestRate}" />
+				<input type="hidden" name="paidEmis" th:value="0" />
+				<button type="submit" class="btn btn-success btn-submit m-5">Update Finance</button>
+			</form>
+		</div>
+			<script>
+	function getAmount(tenure){
+		var amount = document.getElementById("loan").value;
+		var emi = amount / parseInt(tenure);
+		document.getElementById("emi").value = emi;
+	}
+	</script>
+	</div>
+
+</body>
+
+</html>

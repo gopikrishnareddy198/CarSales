@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Add Car</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2>
+				Add New Car
+
+			</h2>
+
+		<form th:action="@{/car/save}" th:object="${car}" method="post" enctype="multipart/form-data">
+				<table class="tbl-form">
+					<tr>
+						<td>Photo</td>
+						<td><input type="file" name="image" accept="image/png, image/jpeg" /></td>
+						<td width="100px"></td>
+						<td>Brand</td>
+						<td><input type="text" class="form-control" name="brand" /></td>
+					</tr>
+					<tr>
+						<td>Model</td>
+						<td><input type="text" class="form-control" name="model" /></td>
+						<td></td>
+						<td>Color</td>
+						<td><input type="text" class="form-control" name="color" /></td>
+					</tr>
+					<tr>
+						<td>Engine</td>
+						<td><input type="text" class="form-control" name="engine" /></td>
+						<td></td>
+						<td>FuelType</td>
+						<td><input type="text" class="form-control" name="fuelType" /></td>
+					</tr>
+					<tr>
+						<td>Mileage</td>
+						<td><input type="text" class="form-control" name="mileage" /></td>
+						<td></td>
+						<td>Reg Year</td>
+						<td><input type="text" class="form-control" name="regYear" /></td>
+					</tr>
+					<tr>
+						<td>No Of Owners</td>
+						<td><input type="text" class="form-control" name="noOfOwner" /></td>
+						<td></td>
+						<td>Price</td>
+						<td><input type="text" class="form-control" name="price" /></td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td colspan="4"><textarea class="form-control" name="description" cols="60" rows="3"></textarea></td>
+					</tr>
+					
+				</table>
+				<button type="submit" class="btn btn-success btn-submit">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Emi Details  &nbsp; &nbsp; &nbsp; 
+				<a th:href="@{'/emi/create/' + ${financeId}}" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>
+					Add New</a>
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Paid Amount</th>
+							<th>Payment Date</th>
+							<th>Payment Mode</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.paidAmount}"></td>
+							<td th:text="${data.paymentDate}"></td>
+							<td th:text="${data.paymentMode}"></td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

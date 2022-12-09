@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Car List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Car List 
+				<a th:if="${session.name != 'Admin'}" href="/car/create" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>
+					Add New</a>
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>ID</th>
+							<th>Brand</th>
+							<th>Model</th>
+							<th>Color</th>
+							<th>RegYear</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td><a th:text="${data.carId}" th:href="@{'/car/show/' + ${data.id}}"></a></td>
+							<td th:text="${data.brand}"></td>
+							<td th:text="${data.model}"></td>
+							<td th:text="${data.color}"></td>
+							<td th:text="${data.regYear}"></td>
+							<td th:text="${data.price}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

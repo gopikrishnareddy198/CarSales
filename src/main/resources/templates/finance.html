@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Finance List 
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>BookingID</th>
+							<th>buyerID</th>
+							<th>Loan Amount</th>
+							<th>Tenure</th>
+							<th>Interest</th>
+							<th>EMI</th>
+							<th>Paid EMIs</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.bookingId}"></td>
+							<td th:text="${data.buyerId}"></td>
+							<td th:text="${data.loanAmount}"></td>
+							<td th:text="${data.tenure}"></td>
+							<td th:text="${data.interestRate}"></td>
+							<td th:text="${data.emi}"></td>
+							<td th:text="${data.paidEmis}"></td>
+							<td><a th:href="@{'/emi/list/' + ${data.id}}">EMI Details</a></td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>My Booking List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				My Bookings List 
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Booking Id</th>
+							<th>Booked Date</th>
+							<th>Package Id</th>
+							<th>Tourists</th>
+							<th>Amount</th>
+							<th>Status</th>
+							<th>Cancel</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.bookingId}"></td>
+							<td th:text="${data.bookedDate}"></td>
+							<td th:text="${data.packageId}"></td>
+							<td th:text="${data.adult}+${data.child}"></td>
+							<td th:text="${data.amount}"></td>
+							<td th:text="${data.bookingStatus}"></td>
+
+							<td><a  th:text="cancel" th:href="@{'/booking/delete/' + ${data.id}}" class="btn"></a></td >
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

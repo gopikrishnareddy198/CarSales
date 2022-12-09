@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>My Profile </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Add EMI Entry
+			</h2>
+			<form th:action="@{/emi/save}" th:object="${emi}">
+				<table class="tbl-form">
+					<tr>
+						<td> Finance ID </td>
+						<td><input readonly type="text" class="form-control" name="financeId" th:value="${financeId}" />
+						</td>
+					</tr>
+					<tr>
+						<td> EMI Amount </td>
+						<td><input type="text" readonly class="form-control" th:value="${emiAmount}"  /></td>
+					</tr>
+					<tr>
+						<td> Paid Amount </td>
+						<td><input type="text" class="form-control" name="paidAmount"  /></td>
+					</tr>
+					<tr>
+						<td> Payment Date </td>
+						<td><input type="date" class="form-control" name="paymentDate"  /></td>
+					</tr>
+					<tr>
+						<td>Payment Mode</td>
+						<td><select class="form-control" name="paymentMode" >
+								<option value="Cash">Cash</option>
+								<option value="Card">Card</option>
+								<option value="Online">Online</option>
+							</select>
+						</td>
+					</tr>
+					
+				</table>
+
+				<button type="submit" class="btn btn-success btn-submit">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
